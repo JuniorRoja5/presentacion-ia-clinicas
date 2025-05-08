@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Servicio IA Clínicas Estéticas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+        }
+        .slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-color: white;
+            overflow-y: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1rem;
+        }
+        .slide h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #4338ca;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 3px solid #4f46e5;
+            padding-bottom: 0.5rem;
+        }
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            color: #4b5563;
+            text-align: left;
+            width: 85%;
+            max-width: 900px;
+            line-height: 1.6;
+        }
+        .slide ul {
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+            text-align: left;
+            width: 85%;
+            max-width: 900px;
+        }
+        .slide li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+        .slide li::before {
+            content: "•";
+            color: #4f46e5;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .slide li ul {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            width: 100%;
+        }
+
+        .chart-container {
+            width: 85%;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            color: white;
+            background-color: #4f46e5;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 1.5rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .button:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+        #myChart {
+            width: 100%;
+            height: 100%;
+        }
+        .slide h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4338ca;
+            text-align: left;
+            width: 85%;
+            max-width: 900px;
+            font-weight: 600;
+        }
+        .slide h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #4b5563;
+            text-align: left;
+            width: 85%;
+            max-width: 900px;
+            font-weight: 600;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 85%;
+            max-width: 700px;
+            margin-top: 1.5rem;
+        }
+        .logo {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4338ca;
+        }
+        .flow-diagram {
+            width: 85%;
+            max-width: 800px;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .slide-counter {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        .welcome-message {
+            font-size: 1.8rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+            width: 85%;
+        }
+        .emoji {
+            margin-right: 0.5rem;
+            font-size: 1.2em;
+        }
+        .highlight {
+            color: #4338ca;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans p-4">
+    <div class="slide bg-white">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Presentación Servicio IA para Clínicas Estéticas</h2>
+        <p class="welcome-message">Hola Esteban. Ante todo darte las gracias por tu tiempo en nuestra llamada. En este documento quiero recopilar tus dudas y guiarte en el proceso para integrar este servicio a tus clínicas.</p>
+        <h3 class="text-2xl font-semibold text-blue-700 text-center mb-6">Servicio de Asistente Virtual con IA</h3>
+        <div class="chart-container">
+            <canvas id="introChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button" style="visibility: hidden;">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 1/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 1: Amplía Tu Portafolio con IA</h2>
+        <p class="text-gray-600 text-lg">
+            ¡Amplía Tu Portafolio y Genera Ingresos Recurrentes con IA para Clínicas Estéticas!
+        </p>
+        <ul>
+            <li><span class="emoji">💼</span><span class="highlight">La Nueva Oportunidad de Negocio:</span> Ofrece un servicio innovador y de alta demanda en el sector estético.</li>
+            <li><span class="emoji">🔧</span><span class="highlight">Soluciona un Problema Real:</span> Automatiza la comunicación y gestión de citas para tus clientes clínicas.</li>
+            <li><span class="emoji">🔑</span><span class="highlight">Modelo "Llave en Mano":</span> Yo pongo la tecnología robusta y escalable, tú pones el cliente y la relación comercial.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="oportunidadChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 2/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 2: El Desafío de la Comunicación</h2>
+        <p class="text-gray-600 text-lg">El Punto Débil de Muchas Clínicas Estéticas Hoy: El Desafío de la Comunicación Constante</p>
+        <ul>
+            <li><span class="emoji">📱</span><span class="highlight">Mensajes sin Control:</span> Inbox de Instagram y WhatsApp saturados con consultas constantes de clientes potenciales.</li>
+            <li><span class="emoji">⏰</span><span class="highlight">Personal Atado al Chat:</span> Recepcionistas dedicando horas a responder las mismas preguntas una y otra vez, en lugar de atender a pacientes presentes.</li>
+            <li><span class="emoji">📉</span><span class="highlight">Leads que se Escapan:</span> Respuestas lentas o fuera de horario = clientes potenciales que buscan otra opción.</li>
+            <li><span class="emoji">🗓️</span><span class="highlight">Ineficiencia en Citas:</span> Agendar manualmente a través de chat es lento, propenso a errores y consume tiempo valioso.</li>
+            <li><span class="emoji">🌙</span><span class="highlight">Horario Limitado:</span> La comunicación se detiene cuando la clínica cierra, perdiendo oportunidades nocturnas o de fin de semana.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="desafiosChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 3/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 3: Tu Solución de Asistente IA</h2>
+        <p class="text-gray-600 text-lg">Tu Solución: Un Asistente de Comunicación con Inteligencia Artificial (Marca Blanca) para ti.</p>
+        <p class="text-gray-600 text-lg">Ofrece una Automatización Inteligente y Siempre Activa</p>
+        <ul>
+            <li><span class="emoji">🤖</span>Presenta a tus clientes un "<span class="highlight">Recepcionista Virtual IA</span>" dedicado a gestionar sus mensajes en los canales digitales más importantes.</li>
+            <li><span class="emoji">🧠</span>Un sistema inteligente que aprende los detalles específicos de su clínica: sus servicios, sus precios, sus horarios...</li>
+            <li><span class="emoji">⏱️</span>Funciona <span class="highlight">24 horas al día, 7 días a la semana</span>, sin descanso, sin errores de información.</li>
+            <li><span class="emoji">🏷️</span>Tú ofreces este potente servicio <span class="highlight">bajo tu propia marca</span>; nosotros nos encargamos de toda la complejidad técnica detrás.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="solucionChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 4/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 4: Funciones Clave del Asistente</h2>
+        <p class="text-gray-600 text-lg">¿Qué Funciones Clave Ofrece Este Asistente? Capacidades que Impulsan la Eficiencia y las Citas</p>
+        <ul>
+            <li><span class="emoji">🗣️</span><span class="highlight">Respuesta Inteligente a Preguntas Frecuentes (FAQs):</span>
+                <ul>
+                    <li>Informa sobre servicios, descripciones de tratamientos, precios, horarios de apertura, ubicación, políticas de la clínica... ¡con la información exacta de esa clínica!</li>
+                </ul>
+            </li>
+            <li><span class="emoji">📱</span><span class="highlight">Gestión de Conversaciones en Instagram DM y WhatsApp:</span>
+                <ul>
+                    <li>Atiende a los clientes directamente en sus plataformas de comunicación preferidas.</li>
+                </ul>
+            </li>
+            <li><span class="emoji">🗓️</span><span class="highlight">Agendamiento Directo de Citas en Google Calendar:</span>
+                <ul>
+                    <li>Identifica cuándo un cliente quiere reservar un servicio.</li>
+                    <li>Guía la conversación para obtener los detalles necesarios (servicio, fecha, hora).</li>
+                    <li>¡Crea el evento de cita automáticamente en el Google Calendar de la clínica!</li>
+                </ul>
+            </li>
+            <li><span class="emoji">✨</span><span class="highlight">Mantiene el Tono de la Marca:</span> Responde de forma profesional, amable y coherente con la imagen de la clínica.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="funcionesChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 5/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 5: La Base Tecnológica</h2>
+        <p class="text-gray-600 text-lg">Una "Plantilla Inteligente" y Configurable</p>
+        <ul>
+            <li><span class="emoji">⚙️</span>Utilizamos <span class="highlight">n8n</span>, una robusta plataforma de automatización de código abierto, alojada de forma segura en nuestra propia infraestructura de servidores. Es el "cerebro organizador" de cada asistente.</li>
+            <li><span class="emoji">📝</span>Desarrollamos una <span class="highlight">Plantilla Maestra</span> de flujo de trabajo en n8n que contiene toda la lógica necesaria para la comunicación y el agendamiento.</li>
+            <li><span class="emoji">🔄</span>Configuración de los <span class="highlight">Webhooks en Meta</span> (tanto para Instagram como para WhatsApp) apuntando a las direcciones únicas que te proporcionaré para esa clínica.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="recopilarChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 11/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Proceso Paso a Paso para Activar</h2>
+        <p class="text-gray-600 text-lg">Rápido y Eficiente: De la Venta a la Puesta en Marcha</p>
+        <ul>
+            <li><span class="emoji">🤝</span><span class="highlight">Venta Cerrada:</span> Consigues un nuevo cliente clínica interesado en el servicio.</li>
+            <li><span class="emoji">💳</span><span class="highlight">Pago Inicial:</span> Me abonas la tarifa de configuración inicial de 200€ por esa clínica.</li>
+            <li><span class="emoji">📧</span><span class="highlight">Envío de Información:</span> Me facilitas todos los datos y accesos seguros que has recopilado de tu cliente.</li>
+            <li><span class="emoji">🔧</span><span class="highlight">Yo Despliego y Configuro:</span>
+                <ul>
+                    <li>Creo un nuevo proyecto dedicado en nuestra plataforma n8n.</li>
+                    <li>Duplicamos la Plantilla Maestra en ese proyecto.</li>
+                    <li>Creamos el archivo de configuración (.env) específico para esa clínica.</li>
+                    <li>Configuramos las URLs de Webhook en Meta.</li>
+                    <li>Me aseguro de que la base de datos de conocimiento esté correctamente conectada.</li>
+                </ul>
+            </li>
+            <li><span class="emoji">✅</span><span class="highlight">Realizamos Pruebas Exhaustivas:</span> Validamos que el asistente responda correctamente y agende citas sin problemas.</li>
+            <li><span class="emoji">📬</span><span class="highlight">Te Notifico:</span> Te confirmo que la configuración ha finalizado y el servicio está listo.</li>
+            <li><span class="emoji">🚀</span><span class="highlight">¡Tú Lo Pones en Vivo!</span> Informas a tu cliente clínica que su Asistente IA ya está operativo.</li>
+            <li><span class="emoji">📊</span><span class="highlight">Facturación Recurrente:</span> A partir de este punto, te facturaré 19€/mes por esta clínica mientras mantenga el servicio activo.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="procesoChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 12/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Beneficios Tangibles</h2>
+        <p class="text-gray-600 text-lg">Valor Real para las Clínicas Estéticas</p>
+        <ul>
+            <li><span class="emoji">⏱️</span><span class="highlight">Ahorro Masivo de Tiempo:</span> Libera al personal de recepción para tareas de mayor valor.</li>
+            <li><span class="emoji">🔄</span><span class="highlight">Atención al Cliente 24/7:</span> Nunca pierden una consulta o una oportunidad de cita por estar fuera de horario.</li>
+            <li><span class="emoji">📈</span><span class="highlight">Mayor Captación de Leads y Citas:</span> Responden al instante y facilitan el proceso de reserva.</li>
+            <li><span class="emoji">📋</span><span class="highlight">Información Consistente y Profesional:</span> Aseguran que todos los clientes reciban datos precisos y actualizados.</li>
+            <li><span class="emoji">⭐</span><span class="highlight">Mejora la Experiencia del Cliente:</span> Ofrecen una interacción rápida y moderna.</li>
+            <li><span class="emoji">🚀</span><span class="highlight">Imagen de Marca Innovadora:</span> Se posicionan a la vanguardia tecnológica.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="beneficiosChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="homeButton" class="button">Inicio</button>
+        </div>
+        <div class="slide-counter">Slide 13/13</div>
+    </div>
+
+    <script>
+        // Inicializar Mermaid JS
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+        
+        const slides = document.querySelectorAll('.slide');
+        const nextButtons = document.querySelectorAll('#nextButton');
+        const prevButtons = document.querySelectorAll('#prevButton');
+        const homeButtons = document.querySelectorAll('#homeButton');
+        let currentSlide = 0;
+
+        slides.forEach(slide => slide.style.display = 'none');
+        slides[currentSlide].style.display = 'flex';
+
+        function updateSlideCounters() {
+            document.querySelectorAll('.slide-counter').forEach((counter, index) => {
+                counter.textContent = `Slide ${index + 1}/${slides.length}`;
+            });
+        }
+
+        updateSlideCounters();
+
+        function goToSlide(index) {
+            slides[currentSlide].style.display = 'none';
+            currentSlide = index;
+            slides[currentSlide].style.display = 'flex';
+            
+            // Renderizar Mermaid diagrams si estamos en la diapositiva del diagrama
+            if (currentSlide === 6) {
+                mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+            }
+            
+            // Actualizar los gráficos (por si se han redimensionado)
+            charts.forEach(chart => {
+                if (chart) {
+                    chart.resize();
+                }
+            });
+        }
+
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    goToSlide(currentSlide + 1);
+                }
+            });
+        });
+
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    goToSlide(currentSlide - 1);
+                }
+            });
+        });
+
+        homeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                goToSlide(0);
+            });
+        });
+
+        // Configuraciones de gráficos
+        const introChartConfig = {
+            type: 'radar',
+            data: {
+                labels: ['Innovación', 'Eficiencia', 'Automatización', 'Rentabilidad', 'Escalabilidad', 'Personalización'],
+                datasets: [{
+                    label: 'Asistente IA para Clínicas',
+                    data: [95, 90, 98, 85, 90, 92],
+                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    borderColor: 'rgba(79, 70, 229, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(79, 70, 229, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Valor del Servicio de Asistente IA',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        };
+
+        const oportunidadChartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['Oportunidad', 'Solución', 'Modelo'],
+                datasets: [{
+                    label: 'Beneficios',
+                    data: [95, 90, 85],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Beneficios del Servicio IA',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        };
+
+        const desafiosChartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['Mensajes sin Control', 'Personal Atado al Chat', 'Leads Escapados', 'Ineficiencia en Citas', 'Horario Limitado'],
+                datasets: [{
+                    label: 'Nivel de Desafío',
+                    data: [90, 85, 80, 75, 70],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(249, 115, 22, 0.7)',
+                        'rgba(236, 72, 153, 0.7)',
+                        'rgba(139, 92, 246, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(239, 68, 68, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(249, 115, 22, 1)',
+                        'rgba(236, 72, 153, 1)',
+                        'rgba(139, 92, 246, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Desafíos de Comunicación en Clínicas',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        };
+
+        const solucionChartConfig = {
+            type: 'doughnut',
+            data: {
+                labels: ['Automatización 24/7', 'Personalización por Clínica', 'Gestión de Canales', 'Ahorro de Tiempo'],
+                datasets: [{
+                    label: 'Solución IA',
+                    data: [40, 25, 20, 15],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(59, 130, 246, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Componentes de la Solución IA',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        };
+
+        const funcionesChartConfig = {
+            type: 'polarArea',
+            data: {
+                labels: ['Respuesta a FAQs', 'Gestión de Conversaciones', 'Agendamiento Directo', 'Tono de Marca'],
+                datasets: [{
+                    label: 'Importancia',
+                    data: [90, 85, 95, 80],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(59, 130, 246, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Funciones Clave del Asistente',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        const tecnologiaChartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['n8n Plataforma', 'Plantilla Maestra', 'Personalización', 'Inteligencia Artificial'],
+                datasets: [{
+                    label: 'Componentes Tecnológicos',
+                    data: [90, 95, 85, 98],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(59, 130, 246, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Base Tecnológica',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        };
+
+        const colaboracionChartConfig = {
+            type: 'radar',
+            data: {
+                labels: ['Ventas', 'Relación Cliente', 'Recopilación Datos', 'Infraestructura', 'Despliegue', 'Mantenimiento'],
+                datasets: [{
+                    label: 'Tu Rol',
+                    data: [95, 90, 80, 0, 0, 0],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                    pointBorderColor: '#fff'
+                },
+                {
+                    label: 'Mi Rol',
+                    data: [0, 0, 0, 95, 90, 85],
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(16, 185, 129, 1)',
+                    pointBorderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Modelo de Colaboración',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        };
+
+        const costesChartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['Construcción Plantilla', 'Configuración Inicial', 'Precio Mensual'],
+                datasets: [{
+                    label: 'Costes (€)',
+                    data: [0, 200, 19],
+                    backgroundColor: [
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(59, 130, 246, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Estructura de Costes',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        const gananciaChartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['Precio Venta 150€', 'Precio Venta 200€', 'Precio Venta 300€'],
+                datasets: [{
+                    label: 'Coste (19€)',
+                    data: [19, 19, 19],
+                    backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Margen Mensual',
+                    data: [131, 181, 281],
+                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Potencial de Ganancia Mensual por Clínica',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stacked: true
+                    },
+                    x: {
+                        stacked: true
+                    }
+                }
+            }
+        };
+
+        const recopilarChartConfig = {
+            type: 'pie',
+            data: {
+                labels: ['Datos de la Clínica', 'Accesos Necesarios'],
+                datasets: [{
+                    label: 'Información Necesaria',
+                    data: [55, 45],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(59, 130, 246, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Información a Recopilar',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        };
+
+        const procesoChartConfig = {
+            type: 'bar',
+            data: {
+                labels: ['Venta', 'Pago', 'Información', 'Despliegue', 'Pruebas', 'Notificación', 'Activación', 'Facturación'],
+                datasets: [{
+                    label: 'Etapas del Proceso',
+                    data: [1, 2, 3, 4, 5, 6, 7, 8],
+                    backgroundColor: [
+                        'rgba(79, 70, 229, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(236, 72, 153, 0.7)',
+                        'rgba(139, 92, 246, 0.7)',
+                        'rgba(249, 115, 22, 0.7)',
+                        'rgba(79, 70, 229, 0.7)',
+                    ],
+                    borderColor: [
+                        'rgba(79, 70, 229, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(236, 72, 153, 1)',
+                        'rgba(139, 92, 246, 1)',
+                        'rgba(249, 115, 22, 1)',
+                        'rgba(79, 70, 229, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Proceso de Activación',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 8
+                    }
+                }
+            }
+        };
+
+        const beneficiosChartConfig = {
+            type: 'radar',
+            data: {
+                labels: ['Ahorro de Tiempo', 'Atención 24/7', 'Captación de Leads', 'Información Consistente', 'Experiencia Cliente', 'Imagen Innovadora'],
+                datasets: [{
+                    label: 'Nivel de Beneficio',
+                    data: [95, 98, 90, 85, 92, 88],
+                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    borderColor: 'rgba(79, 70, 229, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(79, 70, 229, 1)',
+                    pointBorderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Beneficios Tangibles para el Negocio',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        };
+
+        // Inicializar los gráficos
+        const charts = [];
+        function initCharts() {
+            try {
+                // Verificar que Chart esté definido
+                if (typeof Chart === 'undefined') {
+                    console.error('Chart.js no está cargado correctamente. Intentando cargar de nuevo...');
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js';
+                    script.onload = function() {
+                        console.log('Chart.js cargado correctamente, inicializando gráficos...');
+                        initChartsCore();
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    initChartsCore();
+                }
+            } catch (error) {
+                console.error('Error al inicializar los gráficos:', error);
+            }
+        }
+
+        function initChartsCore() {
+            try {
+                if (document.getElementById('introChart')) {
+                    charts.push(new Chart(document.getElementById('introChart'), introChartConfig));
+                }
+                if (document.getElementById('oportunidadChart')) {
+                    charts.push(new Chart(document.getElementById('oportunidadChart'), oportunidadChartConfig));
+                }
+                if (document.getElementById('desafiosChart')) {
+                    charts.push(new Chart(document.getElementById('desafiosChart'), desafiosChartConfig));
+                }
+                if (document.getElementById('solucionChart')) {
+                    charts.push(new Chart(document.getElementById('solucionChart'), solucionChartConfig));
+                }
+                if (document.getElementById('funcionesChart')) {
+                    charts.push(new Chart(document.getElementById('funcionesChart'), funcionesChartConfig));
+                }
+                if (document.getElementById('tecnologiaChart')) {
+                    charts.push(new Chart(document.getElementById('tecnologiaChart'), tecnologiaChartConfig));
+                }
+                if (document.getElementById('colaboracionChart')) {
+                    charts.push(new Chart(document.getElementById('colaboracionChart'), colaboracionChartConfig));
+                }
+                if (document.getElementById('costesChart')) {
+                    charts.push(new Chart(document.getElementById('costesChart'), costesChartConfig));
+                }
+                if (document.getElementById('gananciaChart')) {
+                    charts.push(new Chart(document.getElementById('gananciaChart'), gananciaChartConfig));
+                }
+                if (document.getElementById('recopilarChart')) {
+                    charts.push(new Chart(document.getElementById('recopilarChart'), recopilarChartConfig));
+                }
+                if (document.getElementById('procesoChart')) {
+                    charts.push(new Chart(document.getElementById('procesoChart'), procesoChartConfig));
+                }
+                if (document.getElementById('beneficiosChart')) {
+                    charts.push(new Chart(document.getElementById('beneficiosChart'), beneficiosChartConfig));
+                }
+                console.log('Gráficos inicializados correctamente');
+            } catch (error) {
+                console.error('Error en initChartsCore:', error);
+            }
+        }
+
+        // Inicializar los gráficos después de que la página se haya cargado
+        window.addEventListener('load', function() {
+            setTimeout(initCharts, 500); // Pequeño retraso para asegurar que Chart.js esté cargado
+        });
+
+        // Asegurarse de que los gráficos se redimensionen cuando cambia el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            charts.forEach(chart => {
+                if (chart && typeof chart.resize === 'function') {
+                    chart.resize();
+                }
+            });
+        });
+        
+        // Alternativa sin gráficos para casos donde Chart.js no funcione
+        function createFallbackContent() {
+            const chartContainers = document.querySelectorAll('.chart-container');
+            chartContainers.forEach(container => {
+                if (!container.querySelector('canvas').getContext) {
+                    const fallbackDiv = document.createElement('div');
+                    fallbackDiv.className = 'fallback-chart';
+                    fallbackDiv.style.width = '100%';
+                    fallbackDiv.style.height = '200px';
+                    fallbackDiv.style.backgroundColor = '#f5f7fa';
+                    fallbackDiv.style.display = 'flex';
+                    fallbackDiv.style.alignItems = 'center';
+                    fallbackDiv.style.justifyContent = 'center';
+                    fallbackDiv.style.color = '#4338ca';
+                    fallbackDiv.style.fontWeight = 'bold';
+                    fallbackDiv.style.borderRadius = '0.5rem';
+                    fallbackDiv.style.border = '2px dashed #4338ca';
+                    fallbackDiv.style.padding = '1rem';
+                    fallbackDiv.textContent = 'Información gráfica sobre: ' + container.querySelector('canvas').id.replace('Chart', '');
+                    container.appendChild(fallbackDiv);
+                }
+            });
+        }
+        
+        // Comprobación final por si Chart.js falla
+        setTimeout(function() {
+            if (charts.length === 0) {
+                console.warn('Los gráficos no se inicializaron, creando contenido alternativo');
+                createFallbackContent();
+            }
+        }, 2000);
+    </script>
+</body>
+</html></span>La clave de la escalabilidad: Esta plantilla está diseñada para ser <span class="highlight">altamente personalizable</span> para cada clínica sin necesidad de modificar el código base. Simplemente "rellenamos" las variables necesarias con los datos y accesos específicos de cada cliente tuyo.</li>
+            <li><span class="emoji">🧠</span>La Inteligencia Artificial externa se encarga de la parte conversacional, y nosotros le proporcionamos el "conocimiento" preciso de cada clínica a través de la plantilla.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="tecnologiaChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 6/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 6: Flujo de Comunicación Inteligente</h2>
+        <p class="text-gray-600 text-lg">Del Mensaje del Cliente a la Acción Automática</p>
+        
+        <div class="flow-diagram">
+            <div class="mermaid">
+flowchart TD
+    A[Mensaje del Cliente<br>Instagram DM / WhatsApp] -->|Recibe| B[Plataforma n8n<br>Nuestra Infraestructura<br>Plantilla Activada]
+    B -->|Procesa| C[Lectura Información<br>ESPECÍFICA de la Clínica<br>vía Variables]
+    C --> D["Cerebro IA Externo<br>Análisis del Mensaje"]
+    D -->|Consulta| E[Base de Datos de la Clínica<br>Servicios, Precios, etc.]
+    E --> F[n8n: Decide la Acción<br>Responder o Agendar Cita]
+    F -->|Si es Consulta| G[Genera Respuesta<br>con Info de la Clínica]
+    F -->|Si pide Cita| H[Agenda en Google<br>Calendar de la Clínica]
+    G --> I[Envía Mensaje<br>al Cliente]
+    H --> I
+            </div>
+        </div>
+        
+        <p class="text-gray-600 text-lg">Este diagrama ilustra cómo la información única de cada clínica se integra en el flujo de la plantilla para dar respuestas personalizadas y realizar acciones como agendar citas en el calendario.</p>
+        
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 7/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 7: Nuestro Modelo de Colaboración</h2>
+        <p class="text-gray-600 text-lg">Una Alianza Estratégica para Tu Crecimiento</p>
+        <h3 class="text-xl font-semibold text-blue-700">Tu Rol:</h3>
+        <ul>
+            <li><span class="emoji">🔍</span>Identificar y vender el servicio a tus clientes clínicas.</li>
+            <li><span class="emoji">👥</span>Ser el punto de contacto principal y gestionar la relación comercial con tus clientes.</li>
+            <li><span class="emoji">📊</span>Recopilar la información y los accesos necesarios de la clínica.</li>
+            <li><span class="emoji">💰</span>Gestionar la facturación y el cobro a tu cliente final.</li>
+        </ul>
+        <h3 class="text-xl font-semibold text-blue-700">Mi Rol (Tu Socio Tecnológico):</h3>
+        <ul>
+            <li><span class="emoji">🖥️</span>Proporcionar y mantener la infraestructura de servidores segura y estable.</li>
+            <li><span class="emoji">📋</span>Disponer de la Plantilla Maestra lista y optimizada.</li>
+            <li><span class="emoji">🚀</span>Desplegar y configurar una copia dedicada de la plantilla por cada clínica que me indiques.</li>
+            <li><span class="emoji">⚙️</span>Cargar los datos específicos de cada clínica y configurar sus accesos (IG, WA, Google Calendar).</li>
+            <li><span class="emoji">🔧</span>Encargarnos del hosting, el mantenimiento técnico continuo y la monitorización 24/7 del servicio.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="colaboracionChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 8/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 8: Tu Estructura de Costes</h2>
+        <p class="text-gray-600 text-lg">Un Modelo Diseñado para Tu Rentabilidad</p>
+        <ul>
+            <li><span class="emoji">🔨</span><span class="highlight">Construcción y Diseño de la Plantilla Maestra: 0€</span> (¡Mi Inversión Inicial para Ti!)<br>
+                Asumo el coste del desarrollo de la solución base para que puedas empezar sin una gran inversión inicial.</li>
+            <li><span class="emoji">🔄</span><span class="highlight">Precio de Configuración Inicial por Clínica Activada: 200€</span> (Pago Único por cada nueva clínica)<br>
+                Cubre mi trabajo de puesta en marcha: duplicar la plantilla, cargar sus datos específicos, configurar sus conexiones (Instagram, WhatsApp, Google Calendar) y validar el funcionamiento inicial.</li>
+            <li><span class="emoji">⏱️</span><span class="highlight">Precio Mensual por Clínica Activa: 19€ / mes</span> (Pago Recurrente por cada clínica que use el servicio)<br>
+                Cubre el hosting seguro en mi infraestructura, el mantenimiento técnico continuo de la plataforma n8n, la monitorización para asegurar que todo funcione correctamente y el uso de la licencia necesaria.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="costesChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 9/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 9: Tu Potencial de Ganancia</h2>
+        <p class="text-gray-600 text-lg">Tú Fijas Tu Precio, Tú Ganas</p>
+        <ul>
+            <li><span class="emoji">💸</span><span class="highlight">Tú Decides Cuánto Cobras a Tus Clientes Clínicas:</span> Tienes total flexibilidad para establecer tu precio de venta final lógicamente.</li>
+            <li><span class="emoji">💰</span><span class="highlight">Precio Sugerido de Venta al Cliente Final (Clínica):</span> Dado el considerable valor que este servicio aporta (ahorro de horas de personal, captación de citas extra, atención 24/7), el mercado te permite cobrar entre 150€ y 300€+ mensuales por clínica.</li>
+            <li><span class="emoji">📈</span><span class="highlight">Tu Margen Recurrente Estimado POR Clínica:</span>
+                <ul>
+                    <li>Si cobras 150€/mes: 150€ (Ingreso) - 19€ (Nuestro Coste) = <span class="highlight">131€ / mes de margen</span></li>
+                    <li>Si cobras 200€/mes: 200€ (Ingreso) - 19€ (Nuestro Coste) = <span class="highlight">181€ / mes de margen</span></li>
+                    <li>Si cobras 300€/mes: 300€ (Ingreso) - 19€ (Nuestro Coste) = <span class="highlight">281€ / mes de margen</span></li>
+                </ul>
+            </li>
+            <li><span class="emoji">⚡</span>La tarifa inicial de 200€ que me pagas se recupera rápidamente con el primer o segundo mes de facturación a tu cliente.</li>
+        </ul>
+        <div class="chart-container">
+            <canvas id="gananciaChart"></canvas>
+        </div>
+        <div class="nav-buttons">
+            <button id="prevButton" class="button">Anterior</button>
+            <button id="nextButton" class="button">Siguiente</button>
+        </div>
+        <div class="slide-counter">Slide 10/12</div>
+    </div>
+
+    <div class="slide bg-white" style="display: none;">
+        <div class="logo">CAVERNA TECNOLÓGICA</div>
+        <h2 class="text-3xl font-semibold text-blue-700">Punto 10: ¿Qué Necesitas Recopilar?</h2>
+        <p class="text-gray-600 text-lg">Información Esencial para la Personalización</p>
+        <h3 class="text-xl font-semibold text-blue-700">Para que podamos activar el servicio para una nueva clínica tuya, tu tarea es obtener de tu cliente y facilitarnos:</h3>
+        <h4 class="text-lg font-semibold text-blue-700">1. Los Datos de la Clínica:</h4>
+        <ul>
+            <li><span class="emoji">📋</span>Lista completa de <span class="highlight">Servicios</span> que ofrecen y su descripción detallada.</li>
+            <li><span class="emoji">💲</span>Lista de <span class="highlight">Precios</span> actualizada para cada servicio.</li>
+            <li><span class="emoji">🕒</span><span class="highlight">Horarios</span> de apertura y cierre (días laborables, fines de semana).</li>
+            <li><span class="emoji">❓</span>Respuestas a <span class="highlight">Preguntas Frecuentes</span> comunes (ej: políticas de cancelación, métodos de pago, si ofrecen bonos, etc.).</li>
+            <li><span class="emoji">🏢</span>El <span class="highlight">Nombre exacto</span> de la clínica (para que el asistente se presente correctamente).</li>
+            <li><span class="emoji">🌍</span>Su <span class="highlight">Zona Horaria</span> (crucial para agendar citas correctamente).</li>
+        </ul>
+        <h4 class="text-lg font-semibold text-blue-700">2. Los Accesos Necesarios:</h4>
+        <ul>
+            <li><span class="emoji">📱</span>El ID de su cuenta de <span class="highlight">Instagram Business</span> (debe ser cuenta profesional y estar vinculada a una página de Facebook).</li>
+            <li><span class="emoji">🔑</span>Un Token de Acceso de larga duración para la API de Instagram (se genera desde Meta Business Suite).</li>
+            <li><span class="emoji">📲</span>El ID del número de teléfono de su cuenta de <span class="highlight">WhatsApp Business</span> Cloud API.</li>
+            <li><span class="emoji">🔑</span>Un Token de Acceso de larga duración para la API de WhatsApp (se genera desde Meta Business Suite).</li>
+            <li><span class="emoji">📅</span>El ID del <span class="highlight">Calendario de Google</span> específico donde quieren que se agenden las citas automáticas.</li>
+            <li><span class="emoji">🔄
